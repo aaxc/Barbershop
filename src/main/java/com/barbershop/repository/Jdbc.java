@@ -29,11 +29,12 @@ public class Jdbc
     public ResultSet query(String query)
     {
         ResultSet result = null;
+
         try {
             Statement stmt = conn.createStatement();
             result = stmt.executeQuery(query);
-        } catch (Exception ignored) {
-            System.out.println("query fail");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         return result;
