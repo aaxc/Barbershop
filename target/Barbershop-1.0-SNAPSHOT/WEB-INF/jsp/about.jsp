@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.example.barbershop.model.MenuItem" %>
+<%@ page import="com.barbershop.model.MenuItem" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!doctype html>
 <html lang="en">
@@ -71,7 +71,7 @@
         #main-text {
             margin-top: 100px;
             padding: 30px;
-            background-color:#fafafa;
+            background-color: rgba(250, 250, 250, 0.9);
             text-align: justify;
             color: #212121;
         }

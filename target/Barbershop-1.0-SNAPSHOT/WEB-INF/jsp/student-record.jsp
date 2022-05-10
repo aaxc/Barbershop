@@ -1,4 +1,4 @@
-<%@ page import="com.example.barbershop.demostudent.Student" %>
+<%@ page import="com.barbershop.demostudent.Student" %>
 <html>
 <head>
     <title>Student Record</title>
