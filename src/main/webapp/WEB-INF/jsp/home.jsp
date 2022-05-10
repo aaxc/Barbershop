@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <title>Barbershop</title>
 
     <style>
@@ -37,7 +38,8 @@
             font-family: 'Pacifico', cursive;
             color: #fff !important;
         }
-        .nav-item:hover {
+        .nav-item:hover,
+        .nav-item.active{
             background-color: rgba(255, 255, 255, 0.25) !important;
         }
 
@@ -78,7 +80,7 @@
 
             padding: 50px;
             font-size: max(36px, 3.2vw);
-            font-family: 'Pacifico', cursive;
+            font-family: 'Dancing Script', cursive;
             color: #fafafa !important;
         }
 
