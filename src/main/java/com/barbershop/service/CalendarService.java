@@ -1,7 +1,7 @@
 package com.barbershop.service;
 
 import com.barbershop.mapper.OrderMapper;
-import com.barbershop.model.OrderItem;
+import com.barbershop.model.Order;
 import com.barbershop.repository.OrderDAO;
 import com.barbershop.repository.Jdbc;
 
@@ -19,12 +19,12 @@ import java.util.List;
  */
 public class CalendarService
 {
-    public List<OrderItem> getEvents()
+    public List<Order> getEvents()
     {
         Jdbc jdbc = new Jdbc();
 
         ResultSet rs = jdbc.query("SELECT * FROM orders");
-        List<OrderItem> result = new ArrayList<>();
+        List<Order> result = new ArrayList<>();
 
         try {
             while (rs.next()) {
@@ -42,5 +42,31 @@ public class CalendarService
         }
 
         return result;
+    }
+
+    /**
+     * [
+     *    {
+     *        title: 'BOOKED',
+     *        start: '2022-05-10'
+     *     },
+     *     {
+     *         title: 'BOOKED',
+     *         start: '2022-05-13'
+     *     },
+     *     {
+     *         title: 'BOOKED',
+     *         start: '2022-05-14'
+     *     }
+     * ]
+     */
+    public String getEventsAsJson()
+    {
+        List<Order> test = this.getEvents();
+        for (Order t : test) {
+            System.out.println(t.getTimestampFrom());
+        }
+
+        return "[{title: 'BOOKED',start: '2022-05-14'}]";
     }
 }

@@ -1,6 +1,6 @@
 package com.barbershop.service;
 
-import com.barbershop.model.MenuItem;
+import com.barbershop.model.Menu;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,13 +16,13 @@ import java.util.Objects;
 public class MenuService
 {
     // @TODO Make this a service!
-    public List<MenuItem> getMenu(String activeUrl)
+    public List<Menu> getMenu(String activeUrl)
     {
         return new ArrayList<>(Arrays.asList(
-                new MenuItem("Home", "", Objects.equals(activeUrl, "home")),
-                new MenuItem("About", "about", Objects.equals(activeUrl, "about")),
-                new MenuItem("Reservations", "reservations", Objects.equals(activeUrl, "reservations")),
-                new MenuItem("<i class=\"fa-solid fa-lock text-warning\"></i>", "admin")
+                new Menu("Home", "", Objects.equals(activeUrl, "home")),
+                new Menu("About", "about", Objects.equals(activeUrl, "about")),
+                new Menu("Reservations", "reservations", Objects.equals(activeUrl, "reservations")),
+                new Menu("<i class=\"fa-solid fa-lock text-warning\"></i>", "admin")
         ));
     }
 }

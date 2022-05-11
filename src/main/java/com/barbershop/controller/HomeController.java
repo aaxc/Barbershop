@@ -1,6 +1,6 @@
 package com.barbershop.controller;
 
-import com.barbershop.model.OrderItem;
+import com.barbershop.model.Order;
 import com.barbershop.service.CalendarService;
 import com.barbershop.service.MenuService;
 
@@ -13,24 +13,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "HomeServlet", value = "/")
+@WebServlet(name = "HomeController", value = "/")
 public class HomeController extends HttpServlet
 {
     // Load services
     private final MenuService menuService = new MenuService();
-    private final CalendarService calendarService = new CalendarService();
 
     /**
      * Main data processor
      */
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        // @TODO Remove test
-        List<OrderItem> test = calendarService.getEvents();
-        for (OrderItem t : test) {
-            System.out.println(t.getTimestampFrom());
-        }
-
         // Load menu
         request.setAttribute("menuList", menuService.getMenu("home"));
 

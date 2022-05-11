@@ -1,6 +1,6 @@
 package com.barbershop.mapper;
 
-import com.barbershop.model.OrderItem;
+import com.barbershop.model.Order;
 import com.barbershop.repository.OrderDAO;
 
 import java.sql.Timestamp;
@@ -13,17 +13,17 @@ import java.sql.Timestamp;
  */
 public class OrderMapper
 {
-    public static OrderItem mapFromDAO(OrderDAO orderDAO)
+    public static Order mapFromDAO(OrderDAO orderDAO)
     {
-        OrderItem myOrderItem = new OrderItem();
+        Order myItem = new Order();
 
-        myOrderItem.setServiceId(orderDAO.getServiceId());
-        myOrderItem.setClientId(orderDAO.getClientId());
-        myOrderItem.setTimestampFrom(new Timestamp(orderDAO.getTimestampFrom()));
-        myOrderItem.setTimestampTill(new Timestamp(orderDAO.getTimestampFrom()));
-        myOrderItem.setCancelled(orderDAO.isCancelled());
-        myOrderItem.setFinished(orderDAO.isFinished());
+        myItem.setServiceId(orderDAO.getServiceId()); // @TODO setService()
+        myItem.setClientId(orderDAO.getClientId());   // @TODO setClient()
+        myItem.setTimestampFrom(new Timestamp(orderDAO.getTimestampFrom()));
+        myItem.setTimestampTill(new Timestamp(orderDAO.getTimestampFrom()));
+        myItem.setCancelled(orderDAO.isCancelled());
+        myItem.setFinished(orderDAO.isFinished());
 
-        return myOrderItem;
+        return myItem;
     }
 }

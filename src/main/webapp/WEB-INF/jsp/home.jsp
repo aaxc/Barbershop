@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.barbershop.model.MenuItem" %>
+<%@ page import="com.barbershop.model.Menu" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!doctype html>
 <html lang="en">
@@ -120,8 +120,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <%
-                        List<MenuItem> menu = (List) request.getAttribute("menuList");
-                        for (MenuItem mItem: menu) {
+                        List<Menu> menu = (List) request.getAttribute("menuList");
+                        for (Menu mItem: menu) {
                     %>
                     <li class="nav-item <%= mItem.getActive() ? "active" : "" %>">
                         <a class="nav-link" href="${pageContext.request.contextPath}/<%= mItem.getUrl() %>"><%= mItem.getName() %></a>

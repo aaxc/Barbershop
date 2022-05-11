@@ -1,6 +1,7 @@
 package com.barbershop.repository;
 
 import java.sql.*;
+import java.util.List;
 
 /**
  * DB connector
@@ -15,7 +16,7 @@ public class Jdbc
     String password = "password";
     String database = "barbershop";
 
-    Connection conn;
+    public Connection conn;
 
     public Jdbc()
     {
