@@ -4,9 +4,12 @@ import com.barbershop.mapper.OrderMapper;
 import com.barbershop.model.Order;
 import com.barbershop.repository.OrderDAO;
 import com.barbershop.repository.Jdbc;
+import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,11 +65,16 @@ public class CalendarService
      */
     public String getEventsAsJson()
     {
+        JSONArray json = new JSONArray();
+        JSONObject item = new JSONObject();
+
         List<Order> test = this.getEvents();
         for (Order t : test) {
-            System.out.println(t.getTimestampFrom());
+            item.put("title", "BOOKED");
+            item.put("start", new SimpleDateFormat("yyyy-MM-dd").format(t.getTimestampFrom().getTime()));
+            json.add(item);
         }
 
-        return "[{title: 'BOOKED',start: '2022-05-14'}]";
+        return json.toString();
     }
 }

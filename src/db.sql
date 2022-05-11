@@ -39,3 +39,11 @@ CREATE TABLE orders
 );
 ALTER TABLE orders add foreign key (service_id) references services (id);
 ALTER TABLE orders add foreign key (client_id) references clients (id);
+
+INSERT INTO genders (name)
+VALUES ('Female'),
+       ('Male');
+INSERT INTO services (name, price)
+VALUES ('Hair', 1500),
+       ('Beard', 2000),
+       ('Hair&Beard', 3500);
