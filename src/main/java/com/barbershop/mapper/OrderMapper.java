@@ -22,6 +22,7 @@ public class OrderMapper
     {
         Order myItem = new Order();
 
+        myItem.setId(orderDAO.getId());
         myItem.setService(ServiceMapper.mapFromDAO(ServiceDAO.getById(orderDAO.getServiceId())));
         myItem.setClient(ClientMapper.mapFromDAO(ClientDAO.getById(orderDAO.getClientId())));
         myItem.setTimestamp(new Timestamp(orderDAO.getTimestamp()));

@@ -25,8 +25,8 @@ public class Jdbc
     {
         try {
             conn = DriverManager.getConnection(this.url + this.database, this.user, this.password);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

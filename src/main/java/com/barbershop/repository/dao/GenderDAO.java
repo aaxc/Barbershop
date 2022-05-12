@@ -61,8 +61,9 @@ public class GenderDAO
         ResultSet rs = jdbc.query("SELECT * FROM genders WHERE id = " + id);
 
         try {
-            rs.next();
-            return new GenderDAO(rs.getInt("id"), rs.getString("name"));
+            while (rs.next()) {
+                return new GenderDAO(rs.getInt("id"), rs.getString("name"));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

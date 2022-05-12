@@ -110,15 +110,16 @@ public class ClientDAO
         ResultSet rs = jdbc.query("SELECT * FROM clients WHERE id = " + id);
 
         try {
-            rs.next();
-            return new ClientDAO(
-                    rs.getInt("id"),
-                    rs.getString("first_name"),
-                    rs.getString("last_name"),
-                    rs.getString("email"),
-                    rs.getString("phone"),
-                    rs.getInt("gender")
-            );
+            while(rs.next()) {
+                return new ClientDAO(
+                        rs.getInt("id"),
+                        rs.getString("first_name"),
+                        rs.getString("last_name"),
+                        rs.getString("email"),
+                        rs.getString("phone"),
+                        rs.getInt("gender_id")
+                );
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

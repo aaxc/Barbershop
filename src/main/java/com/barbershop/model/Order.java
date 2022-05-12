@@ -10,9 +10,20 @@ import java.sql.Timestamp;
  */
 public class Order
 {
+    int id;
     Service service;
     Client client;
     Timestamp timestamp;
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
 
     public Service getService()
     {

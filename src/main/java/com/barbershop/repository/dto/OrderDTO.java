@@ -2,6 +2,9 @@ package com.barbershop.repository.dto;
 
 /**
  * Reservation order model DTO
+ *
+ * @author Dainis Abols<dainis@dainisabols.lv>
+ * @since 12.05.2022
  */
 public class OrderDTO
 {
@@ -14,9 +17,15 @@ public class OrderDTO
      */
     public OrderDTO(String name, String service_id, String date)
     {
-        this.name = name;
-        this.service_id = service_id;
-        this.date = date;
+        // Validate entries
+        try {
+            // Trim spaces and remove possible tags
+            this.name = name.trim().replaceAll("\\<.*?\\>", "").replaceAll(";", "");
+            this.service_id = service_id.trim().replaceAll("\\<.*?\\>", "").replaceAll(";", "");
+            this.date = date.trim().replaceAll("\\<.*?\\>", "").replaceAll(";", "");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public String getName()

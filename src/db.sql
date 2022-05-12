@@ -45,6 +45,7 @@ ALTER TABLE orders
 INSERT INTO genders (name)
 VALUES ('Female'),
        ('Male');
+
 INSERT INTO services (name, price)
 VALUES ('Hair', 1500),
        ('Beard', 2000),

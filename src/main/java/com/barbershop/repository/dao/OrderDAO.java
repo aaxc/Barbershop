@@ -1,5 +1,9 @@
 package com.barbershop.repository.dao;
 
+import com.barbershop.repository.Jdbc;
+
+import java.sql.PreparedStatement;
+
 /**
  * Order items from/for database
  *
@@ -8,6 +12,7 @@ package com.barbershop.repository.dao;
  */
 public class OrderDAO
 {
+    int id;
     int service_id;
     int client_id;
     long timestamp;
@@ -15,11 +20,22 @@ public class OrderDAO
     /**
      * Full constructor
      */
-    public OrderDAO(int service_id, int client_id, long timestamp)
+    public OrderDAO(int id, int service_id, int client_id, long timestamp)
     {
+        this.id = id;
         this.service_id = service_id;
         this.client_id = client_id;
         this.timestamp = timestamp;
+    }
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
     }
 
     public int getServiceId()
@@ -50,5 +66,23 @@ public class OrderDAO
     public void setTimestamp(long timestamp)
     {
         this.timestamp = timestamp;
+    }
+
+    /**
+     * Destroy order from database
+     */
+    public static void destroy(int id)
+    {
+        try {
+            Jdbc jdbc = new Jdbc();
+            String query = "DELETE FROM orders WHERE id = ?";
+
+            PreparedStatement preparedStmt = jdbc.conn.prepareStatement(query);
+            preparedStmt.setInt(1, id);
+
+            preparedStmt.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
