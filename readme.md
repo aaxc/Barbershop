@@ -19,7 +19,21 @@ Implemented using open source FullCalendar and Bootstrap modals
 
 ### Admin area (open)
 
-*--- Under development ---*
+List of reservations ordered by newest first.
+
+| ID | Client  | Service    | Price  | Date       |
+|----|---------|------------|--------|------------| 
+| 4	 | Dainis  | Hair&Beard | €35.00 | 27.06.2022 |
+| 5  | Agnese  | Hair       | €15.00 | 30.05.2022 |
+
+Has options to filter out by each element:
+- id
+- client
+- service
+- price
+- date
+
+Has option to delete an event!
 
 ## This project has been developed on:
 

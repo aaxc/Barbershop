@@ -2,7 +2,6 @@ package com.barbershop.controller;
 
 import com.barbershop.repository.dao.OrderDAO;
 import com.barbershop.repository.dto.AdminDTO;
-import com.barbershop.repository.dto.OrderDTO;
 import com.barbershop.service.CalendarService;
 
 import javax.servlet.RequestDispatcher;
@@ -24,6 +23,7 @@ public class AdminController extends HttpServlet
     private void processRequest(HttpServletRequest request, HttpServletResponse response, Boolean clean) throws ServletException, IOException
     {
         if (clean) {
+
             request.setAttribute("formId", "");
             request.setAttribute("formClient", "");
             request.setAttribute("formService", "");
@@ -61,6 +61,7 @@ public class AdminController extends HttpServlet
 
             processRequest(request, response, true);
         } else {
+            // Make DTO for data filter
             AdminDTO adminDTO = new AdminDTO(
                     request.getParameter("id"),
                     request.getParameter("client"),
@@ -69,7 +70,7 @@ public class AdminController extends HttpServlet
                     request.getParameter("date")
             );
 
-            // Set default form values
+            // Set default values to form provided (XSS checked!)
             request.setAttribute("formId", adminDTO.getId() > 0 ? adminDTO.getId() : "");
             request.setAttribute("formClient", adminDTO.getClient() != null ? adminDTO.getClient() : "");
             request.setAttribute("formService", adminDTO.getService() != null ? adminDTO.getService() : "");

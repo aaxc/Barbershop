@@ -96,7 +96,14 @@
                             <span style="float: left; padding-right: 10px;" >Price</span> <input type="text" value="<%=request.getAttribute("formPrice")%>" name="price" class="form-control form-control-sm" style="float: left; width: 50px;">
                         </td>
                         <td>
-                            <span style="float: left; padding-right: 10px;" >Date</span> <input type="text" value="<%=((Timestamp)request.getAttribute("formDate")).toLocalDateTime().format(DateTimeFormatter.ofPattern("dd.MM.YYYY"))%>" placeholder="dd.mm.yyyy" name="date" class="form-control form-control-sm" style="float: left; width: 100px;">
+                            <%
+                                String formDate = (String) request.getAttribute("formDate");
+                                try {
+                                    formDate = (String) ((Timestamp) request.getAttribute("formDate")).toLocalDateTime().format(DateTimeFormatter.ofPattern("dd.MM.YYYY"));
+                                } catch (Exception ignored) {
+                                }
+                            %>
+                            <span style="float: left; padding-right: 10px;" >Date</span> <input type="text" value="<%=formDate%>" placeholder="dd.mm.yyyy" name="date" class="form-control form-control-sm" style="float: left; width: 100px;">
                         </td>
                         <td>
                             <button style="float: right;" type="submit" class="btn btn-secondary btn-sm"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -133,7 +140,7 @@
                     <td>€<%= String.format("%.2f", o.getService().getPrice()) %></td>
                     <td><%= o.getTimestamp().toLocalDateTime().format(DateTimeFormatter.ofPattern("dd.MM.YYYY")) %></td>
                     <td>
-                        <form action="${pageContext.request.contextPath}/admin" method="post">
+                        <form action="${pageContext.request.contextPath}/admin" method="post" onSubmit="return confirm('Do you want to delete this event?')">
                             <input type="hidden" name="delete" value="<%=o.getId()%>" />
                             <button style="float: right;" type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
                         </form>
