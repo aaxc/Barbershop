@@ -1,8 +1,9 @@
 package com.barbershop.controller;
 
-import com.barbershop.model.Order;
+import com.barbershop.repository.dto.OrderDTO;
 import com.barbershop.service.CalendarService;
 import com.barbershop.service.MenuService;
+import com.barbershop.service.ServicesService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet(name = "ReservationsController", value = "/reservations")
 public class ReservationsController extends HttpServlet
@@ -19,6 +19,7 @@ public class ReservationsController extends HttpServlet
     // Load services
     private final MenuService menuService = new MenuService();
     private final CalendarService calendarService = new CalendarService();
+    private final ServicesService servicesService = new ServicesService();
 
     /**
      * Main data processor
@@ -27,6 +28,9 @@ public class ReservationsController extends HttpServlet
     {
         // Load menu
         request.setAttribute("menuList", menuService.getMenu("reservations"));
+
+        // Set available services
+        request.setAttribute("servicesList", servicesService.getServices());
 
         // Set calendar
         request.setAttribute("calendarEvents", calendarService.getEventsAsJson());
@@ -51,11 +55,11 @@ public class ReservationsController extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        // @TODO Make a DTO for this!
-        String name = request.getParameter("name");
-        String date = request.getParameter("date");
-
-        System.out.println(name + " " + date);
+        calendarService.saveEvent(new OrderDTO(
+                request.getParameter("name"),
+                request.getParameter("service"),
+                request.getParameter("date")
+        ));
 
         processRequest(request, response);
     }

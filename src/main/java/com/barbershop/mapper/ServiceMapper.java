@@ -1,7 +1,7 @@
 package com.barbershop.mapper;
 
 import com.barbershop.model.Service;
-import com.barbershop.repository.ServiceDAO;
+import com.barbershop.repository.dao.ServiceDAO;
 
 /**
  * Service item mapper
@@ -11,6 +11,9 @@ import com.barbershop.repository.ServiceDAO;
  */
 public class ServiceMapper
 {
+    /**
+     * Convert Service Database Access object to Service object
+     */
     public static Service mapFromDAO(ServiceDAO serviceDAO)
     {
         Service myItem = new Service();

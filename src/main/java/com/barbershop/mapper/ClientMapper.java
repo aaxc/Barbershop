@@ -1,8 +1,8 @@
 package com.barbershop.mapper;
 
 import com.barbershop.model.Client;
-import com.barbershop.repository.ClientDAO;
-import com.barbershop.repository.GenderDAO;
+import com.barbershop.repository.dao.ClientDAO;
+import com.barbershop.repository.dao.GenderDAO;
 
 /**
  * Client item mapper
@@ -12,6 +12,9 @@ import com.barbershop.repository.GenderDAO;
  */
 public class ClientMapper
 {
+    /**
+     * Convert Client Database Access object to Client object
+     */
     public static Client mapFromDAO(ClientDAO clientDAO)
     {
         Client myItem = new Client();

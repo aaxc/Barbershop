@@ -1,7 +1,6 @@
 package com.barbershop.repository;
 
 import java.sql.*;
-import java.util.List;
 
 /**
  * DB connector
@@ -18,6 +17,10 @@ public class Jdbc
 
     public Connection conn;
 
+    /**
+     * Clean constructor
+     * Initializes connection
+     */
     public Jdbc()
     {
         try {
@@ -27,6 +30,9 @@ public class Jdbc
         }
     }
 
+    /**
+     * Basic query execution
+     */
     public ResultSet query(String query)
     {
         ResultSet result = null;

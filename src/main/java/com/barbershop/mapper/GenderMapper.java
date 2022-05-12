@@ -1,7 +1,7 @@
 package com.barbershop.mapper;
 
 import com.barbershop.model.Gender;
-import com.barbershop.repository.GenderDAO;
+import com.barbershop.repository.dao.GenderDAO;
 
 /**
  * Gender item mapper
@@ -11,6 +11,9 @@ import com.barbershop.repository.GenderDAO;
  */
 public class GenderMapper
 {
+    /**
+     * Convert Gender Database Access object to Gender object
+     */
     public static Gender mapFromDAO(GenderDAO genderDAO)
     {
         Gender myItem = new Gender();

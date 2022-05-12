@@ -26,19 +26,21 @@ CREATE TABLE clients
     gender_id  int,
     PRIMARY KEY (id)
 );
-ALTER TABLE clients add foreign key (gender_id) references genders (id);
+ALTER TABLE clients
+    add foreign key (gender_id) references genders (id);
 
 CREATE TABLE orders
 (
-    service_id     int,
-    client_id      int,
-    timestamp_from bigint(13),
-    timestamp_till bigint(13),
-    cancelled      tinyint(1),
-    finished       tinyint(1)
+    id         int NOT NULL AUTO_INCREMENT,
+    service_id int,
+    client_id  int,
+    timestamp  bigint(13),
+    PRIMARY KEY (id)
 );
-ALTER TABLE orders add foreign key (service_id) references services (id);
-ALTER TABLE orders add foreign key (client_id) references clients (id);
+ALTER TABLE orders
+    add foreign key (service_id) references services (id);
+ALTER TABLE orders
+    add foreign key (client_id) references clients (id);
 
 INSERT INTO genders (name)
 VALUES ('Female'),

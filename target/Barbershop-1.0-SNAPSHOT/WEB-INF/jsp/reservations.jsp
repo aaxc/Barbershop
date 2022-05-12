@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.barbershop.model.Menu" %>
+<%@ page import="com.barbershop.model.Service" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!doctype html>
 <html lang="en">
@@ -93,11 +94,11 @@
 
         .fc-center h2,
         .fc-day-header,
-        .fc-day-number{
+        .fc-day-number {
             color: #e0e0e0 !important;
         }
 
-        .fc-unthemed td.fc-today {
+        .fc-day.fc-widget-content.fc-today {
             background-color: rgba(163, 0, 0, 0.7) !important;
         }
 
@@ -114,7 +115,7 @@
         }
 
         .fc-widget-content {
-            height: 120px !important;
+            height: 100px !important;
         }
     </style>
 <body>
@@ -154,10 +155,12 @@
 </div>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newEventModal" id="modalButton" style="display: none;"></button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newEventModal" id="modalButton"
+        style="display: none;"></button>
 
 <!-- Modal -->
-<div class="modal fade" id="newEventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 100px;">
+<div class="modal fade" id="newEventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+     style="padding-top: 100px;">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="${pageContext.request.contextPath}/reservations" method="post">
@@ -173,11 +176,20 @@
                             <input id="visit-date-hidden" name="date" type="hidden" class="form-control">
                         </div>
                     </div>
+                    <div class="form-group row"><div class="col-8" style="height: 10px;"></div></div>
                     <div class="form-group row">
+                        <label for="service" class="col-4 col-form-label">Choose service:</label>
                         <div class="col-8">
-                            &nbsp;
+                            <select id="service" name="service" class="form-control">
+                                <%
+                                    for (Service s: (List<Service>) request.getAttribute("servicesList")) {
+                                        %> <option value="<%=s.getId()%>"><%=s.getName()%></option> <%
+                                    }
+                                %>
+                            </select>
                         </div>
                     </div>
+                    <div class="form-group row"><div class="col-8" style="height: 10px;"></div></div>
                     <div class="form-group row">
                         <label for="name" class="col-4 col-form-label">Your name:</label>
                         <div class="col-8">
@@ -193,8 +205,10 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/interaction/main.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js'></script>

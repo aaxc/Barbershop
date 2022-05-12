@@ -10,70 +10,37 @@ import java.sql.Timestamp;
  */
 public class Order
 {
-    int service_id;
-    int client_id;
-    Timestamp timestamp_from;
-    Timestamp timestamp_till;
-    boolean cancelled;
-    boolean finished;
+    Service service;
+    Client client;
+    Timestamp timestamp;
 
-    public int getServiceId()
+    public Service getService()
     {
-        return service_id;
+        return service;
     }
 
-    public void setServiceId(int service_id)
+    public void setService(Service service)
     {
-        this.service_id = service_id;
+        this.service = service;
     }
 
-    public int getClientId()
+    public Client getClient()
     {
-        return client_id;
+        return client;
     }
 
-    public void setClientId(int client_id)
+    public void setClient(Client client)
     {
-        this.client_id = client_id;
+        this.client = client;
     }
 
-    public Timestamp getTimestampFrom()
+    public Timestamp getTimestamp()
     {
-        return timestamp_from;
+        return timestamp;
     }
 
-    public void setTimestampFrom(Timestamp timestamp_from)
+    public void setTimestamp(Timestamp timestamp)
     {
-        this.timestamp_from = timestamp_from;
-    }
-
-    public Timestamp getTimestampTill()
-    {
-        return timestamp_till;
-    }
-
-    public void setTimestampTill(Timestamp timestamp_till)
-    {
-        this.timestamp_till = timestamp_till;
-    }
-
-    public boolean isCancelled()
-    {
-        return cancelled;
-    }
-
-    public void setCancelled(boolean cancelled)
-    {
-        this.cancelled = cancelled;
-    }
-
-    public boolean isFinished()
-    {
-        return finished;
-    }
-
-    public void setFinished(boolean finished)
-    {
-        this.finished = finished;
+        this.timestamp = timestamp;
     }
 }

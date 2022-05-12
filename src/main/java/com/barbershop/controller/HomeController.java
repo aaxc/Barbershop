@@ -1,7 +1,5 @@
 package com.barbershop.controller;
 
-import com.barbershop.model.Order;
-import com.barbershop.service.CalendarService;
 import com.barbershop.service.MenuService;
 
 import javax.servlet.RequestDispatcher;
@@ -11,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet(name = "HomeController", value = "/")
 public class HomeController extends HttpServlet

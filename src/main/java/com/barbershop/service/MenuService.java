@@ -15,7 +15,9 @@ import java.util.Objects;
  */
 public class MenuService
 {
-    // @TODO Make this a service!
+    /**
+     * Fetch prepared menu list and set active menu
+     */
     public List<Menu> getMenu(String activeUrl)
     {
         return new ArrayList<>(Arrays.asList(

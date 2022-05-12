@@ -1,4 +1,6 @@
-package com.barbershop.repository;
+package com.barbershop.repository.dao;
+
+import com.barbershop.repository.Jdbc;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,10 +16,16 @@ public class GenderDAO
     int id;
     String name;
 
+    /**
+     * Clean constructor
+     */
     public GenderDAO()
     {
     }
 
+    /**
+     * Full constructor
+     */
     public GenderDAO(int id, String name)
     {
         this.id = id;
@@ -44,6 +52,9 @@ public class GenderDAO
         this.name = name;
     }
 
+    /**
+     * Fetch Gender object by id
+     */
     public static GenderDAO getById(int id)
     {
         Jdbc jdbc = new Jdbc();
