@@ -3,7 +3,6 @@ package com.barbershop.repository.dao;
 import com.barbershop.repository.Jdbc;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  * Service items from/for database
@@ -79,8 +78,8 @@ public class ServiceDAO
                     rs.getString("name"),
                     rs.getInt("price")
             );
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+//            e.printStackTrace();
         }
 
         return new ServiceDAO();

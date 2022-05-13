@@ -82,7 +82,7 @@ public class OrderDAO
 
             preparedStmt.execute();
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }
 }

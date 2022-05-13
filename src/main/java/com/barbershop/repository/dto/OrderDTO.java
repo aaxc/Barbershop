@@ -24,7 +24,7 @@ public class OrderDTO
             this.service_id = service_id.trim().replaceAll("\\<.*?\\>", "").replaceAll(";", "");
             this.date = date.trim().replaceAll("\\<.*?\\>", "").replaceAll(";", "");
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }
 

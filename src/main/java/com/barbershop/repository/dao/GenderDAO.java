@@ -3,7 +3,6 @@ package com.barbershop.repository.dao;
 import com.barbershop.repository.Jdbc;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  * Gender items from/for database
@@ -64,8 +63,8 @@ public class GenderDAO
             while (rs.next()) {
                 return new GenderDAO(rs.getInt("id"), rs.getString("name"));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+//            e.printStackTrace();
         }
 
         return new GenderDAO();

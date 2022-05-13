@@ -6,7 +6,6 @@ import com.barbershop.repository.Jdbc;
 import com.barbershop.repository.dao.ServiceDAO;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,8 +36,8 @@ public class ServicesService
                         rs.getInt("price")
                 )));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+//            e.printStackTrace();
         }
 
         return result;

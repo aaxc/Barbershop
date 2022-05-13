@@ -4,7 +4,6 @@ import com.barbershop.repository.Jdbc;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  * Client items from/for database
@@ -110,7 +109,7 @@ public class ClientDAO
         ResultSet rs = jdbc.query("SELECT * FROM clients WHERE id = " + id);
 
         try {
-            while(rs.next()) {
+            while (rs.next()) {
                 return new ClientDAO(
                         rs.getInt("id"),
                         rs.getString("first_name"),
@@ -120,8 +119,8 @@ public class ClientDAO
                         rs.getInt("gender_id")
                 );
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+//            e.printStackTrace();
         }
 
         return new ClientDAO();
@@ -140,8 +139,8 @@ public class ClientDAO
             while (rs.next()) {
                 return rs.getInt("id");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+//            e.printStackTrace();
         }
 
         return 0;
@@ -177,8 +176,8 @@ public class ClientDAO
 
             // Fetch newly created entry id
             id = getIdByName(name);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+//            e.printStackTrace();
         }
 
         // Return client id

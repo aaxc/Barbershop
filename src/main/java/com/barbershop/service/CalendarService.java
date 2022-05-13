@@ -2,19 +2,20 @@ package com.barbershop.service;
 
 import com.barbershop.mapper.OrderMapper;
 import com.barbershop.model.Order;
+import com.barbershop.repository.Jdbc;
 import com.barbershop.repository.dao.ClientDAO;
 import com.barbershop.repository.dao.OrderDAO;
-import com.barbershop.repository.Jdbc;
 import com.barbershop.repository.dto.AdminDTO;
 import com.barbershop.repository.dto.OrderDTO;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Calendar data service
@@ -44,8 +45,8 @@ public class CalendarService
                         rs.getLong("timestamp")
                 )));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+//            e.printStackTrace();
         }
 
         return result;
@@ -65,7 +66,6 @@ public class CalendarService
         String join = "";
 
         try {
-
             // Check ID
             if (adminDTO.getId() > 0) {
                 where += " AND o.id = " + adminDTO.getId();
@@ -95,7 +95,7 @@ public class CalendarService
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
 
         // Combine query
@@ -120,8 +120,8 @@ public class CalendarService
                     )));
                 }
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+//            e.printStackTrace();
         }
 
         return result;
@@ -170,7 +170,7 @@ public class CalendarService
             // execute the prepared statement
             preparedStmt.execute();
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }
 }

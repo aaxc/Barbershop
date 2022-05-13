@@ -1,6 +1,9 @@
 package com.barbershop.repository;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  * DB connector
@@ -25,8 +28,8 @@ public class Jdbc
     {
         try {
             conn = DriverManager.getConnection(this.url + this.database, this.user, this.password);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+//            e.printStackTrace();
         }
     }
 
@@ -40,8 +43,8 @@ public class Jdbc
         try {
             Statement stmt = conn.createStatement();
             result = stmt.executeQuery(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+//            e.printStackTrace();
         }
 
         return result;

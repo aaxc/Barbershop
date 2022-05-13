@@ -1,9 +1,6 @@
 package com.barbershop.repository.dto;
 
-import com.barbershop.repository.Jdbc;
-
 import java.sql.Timestamp;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -52,7 +49,7 @@ public class AdminDTO
             Date myDate = new SimpleDateFormat("dd.MM.yyyy").parse(date);
             this.date = new Timestamp(myDate.getTime());
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }
 
