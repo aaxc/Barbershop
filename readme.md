@@ -40,6 +40,10 @@ Has option to delete an event!
 - JDK 18
 - Tomcat 9.0.62 (with mysql 8.0.29 connector)
 
+### GIT
+
+https://github.com/aaxc/Barbershop
+
 ### External libraries
 - openjdk-18
 - Maven: javax.servlet:javax.servlet-api:4.0.1

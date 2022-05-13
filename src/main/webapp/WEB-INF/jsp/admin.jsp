@@ -96,14 +96,7 @@
                             <span style="float: left; padding-right: 10px;" >Price</span> <input type="text" value="<%=request.getAttribute("formPrice")%>" name="price" class="form-control form-control-sm" style="float: left; width: 50px;">
                         </td>
                         <td>
-                            <%
-                                String formDate = (String) request.getAttribute("formDate");
-                                try {
-                                    formDate = (String) ((Timestamp) request.getAttribute("formDate")).toLocalDateTime().format(DateTimeFormatter.ofPattern("dd.MM.YYYY"));
-                                } catch (Exception ignored) {
-                                }
-                            %>
-                            <span style="float: left; padding-right: 10px;" >Date</span> <input type="text" value="<%=formDate%>" placeholder="dd.mm.yyyy" name="date" class="form-control form-control-sm" style="float: left; width: 100px;">
+                            <span style="float: left; padding-right: 10px;" >Date</span>
                         </td>
                         <td>
                             <button style="float: right;" type="submit" class="btn btn-secondary btn-sm"><i class="fa-solid fa-magnifying-glass"></i></button>

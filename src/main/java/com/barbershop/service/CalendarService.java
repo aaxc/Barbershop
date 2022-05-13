@@ -72,15 +72,15 @@ public class CalendarService
             }
 
             // Check client
-            if (!adminDTO.getClient().equals("")) {
+            if (adminDTO.getClient() != null && !adminDTO.getClient().equals("")) {
                 join += " JOIN clients c ON c.id = o.client_id";
                 where += " AND c.first_name = '" + adminDTO.getClient() + "'";
             }
 
             // Check service
-            if (!adminDTO.getService().equals("")) {
-                join += " JOIN services s ON s.id = s.service_id";
-                where += " AND s.name = '" + adminDTO.getClient() + "'";
+            if (adminDTO.getService() != null && !adminDTO.getService().equals("")) {
+                join += " JOIN services s ON s.id = o.service_id";
+                where += " AND s.name = '" + adminDTO.getService() + "'";
             }
 
             // Check price

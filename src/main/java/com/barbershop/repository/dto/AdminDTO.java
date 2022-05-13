@@ -1,8 +1,10 @@
 package com.barbershop.repository.dto;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Reservation order model DTO
@@ -26,23 +28,27 @@ public class AdminDTO
         // Validate entries
         try {
             // Accept only positive ID
-            int newId = Integer.parseInt(id);
-            if (newId > 0) {
-                this.id = newId;
-            } else {
-                this.id = 0;
+            if (!Objects.equals(id, "")) {
+                int newId = Integer.parseInt(id);
+                if (newId > 0) {
+                    this.id = newId;
+                } else {
+                    this.id = 0;
+                }
             }
 
             // Trim spaces and remove possible tags
-            this.client_name = client.trim().replaceAll("\\<.*?\\>", "").replaceAll(";", "");
-            this.service_name = service.trim().replaceAll("\\<.*?\\>", "").replaceAll(";", "");
+            this.client_name = client;
+            this.service_name = service;
 
             // Accept only positive price
-            long newPrice = Long.parseLong(price);
-            if (newPrice > 0) {
-                this.price = newPrice;
-            } else {
-                this.price = 0;
+            if (!Objects.equals(price, "")) {
+                long newPrice = Long.parseLong(price);
+                if (newPrice > 0) {
+                    this.price = newPrice;
+                } else {
+                    this.price = 0;
+                }
             }
 
             // Parse date or die in general. We got all right or nothing!
